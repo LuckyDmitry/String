@@ -1,2 +1,3 @@
 # String
  
+ Simple Class String
