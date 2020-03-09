@@ -45,8 +45,11 @@ int main() {
 	string result = "aa";
 	Test test;
 	test.test_reverse(a, result);
-
+	String s = "123F";
 	try {
+		String::Iterator it = s.begin();
+		cout << *(it + 4);
+
 	}
 	catch (std::exception & ex) {
 		cout << ex.what();

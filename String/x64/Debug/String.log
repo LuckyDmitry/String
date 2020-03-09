@@ -1,0 +1,7 @@
+﻿  Iterator.cpp
+  Main.cpp
+C:\GitHub\String\String\Main.cpp(30,1): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  String.cpp
+C:\GitHub\String\String\String.cpp(16,31): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  String.vcxproj -> C:\GitHub\String\x64\Debug\String.exe

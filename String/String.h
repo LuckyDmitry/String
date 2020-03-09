@@ -1,6 +1,7 @@
 #pragma once
 #include <ostream>
 #include <istream>
+#include <iostream>
 
 class String
 {
@@ -44,6 +45,8 @@ public:
 
 	friend std::ostream& operator<<(std::ostream &os,String&);
 	friend std::istream& operator>>(std::istream &is,String&);
+	explicit operator int() const;
+	explicit operator double() const;
 	bool operator<(const String&);
 	bool operator>(const String&);
 	String& operator+=(String&);

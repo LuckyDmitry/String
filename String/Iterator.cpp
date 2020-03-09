@@ -12,7 +12,7 @@ String::Iterator::Iterator()
 char String::Iterator::operator*()
 {
 	if (*it == NULL) {
-		throw std::range_error("it is NULL");
+		throw std::range_error("it is NULL in: " __FUNCTION__);
 	}
 	return *it;
 }
@@ -21,7 +21,7 @@ String::Iterator String::Iterator::operator++()
 {
 	++it;
 	if (*it == NULL) {
-		throw std::range_error("range error");
+		throw std::range_error("range error in: " __FUNCTION__);
 	}
 	return this->it;
 }
@@ -29,7 +29,7 @@ String::Iterator String::Iterator::operator++()
 String::Iterator String::Iterator::operator--() {
 	--it;
 	if (*it == NULL) {
-		throw std::range_error("range error");
+		throw std::range_error("range error in: " __FUNCTION__);
 	}
 	return this->it;
 }
@@ -56,7 +56,7 @@ String::Iterator String::Iterator::operator+(int value)
 	while (value != 0) {
 		++this->it;
 		if (*this->it == NULL) {
-			throw std::out_of_range("Out_of_range");
+			throw std::out_of_range("out_of_range in: " __FUNCTION__);
 		}
 		--value;
 	}

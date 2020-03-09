@@ -1,17 +1,8 @@
 #include "String.h"
-#include <iostream>
 
 String::String() {
 	data = nullptr;
 	strLength = NULL;
-}
-
-String::String(char c) {
-	
-	this->data = new char[2];
-	this->data[0] = c;
-	this->data[1] = '\0';
-	this->strLength = 1;
 }
 
 String::String(int a, int b) {
@@ -43,7 +34,10 @@ int String::length() const
 {
 	int count = 0;
 	int i = 0;
-	
+	if (this->strLength != NULL) {
+		return this->strLength;
+	}
+
 	while (this->data[i] != '\0') {
 		++count;
 		++i;
@@ -61,7 +55,7 @@ int String::to_int()
 			++i;
 		}
 		else {
-			throw std::logic_error("excepted int");
+			throw std::logic_error("excepted int value in: " __FUNCTION__);
 		}
 	}
 
@@ -82,7 +76,7 @@ String::Iterator String::end() {
 char& String::operator[](int index)
 {
 	if (index >= strLength) {
-		throw std::logic_error("excepted less than" + index);
+		throw std::logic_error("excepted less value in: " __FUNCTION__ );
 	}
 	return *(this->data + index);
 	
@@ -96,7 +90,7 @@ char String::operator[](int index) const
 void String::append(const String& st) 
 {
 	if (st.strLength == 0) {
-		throw std::exception("FAIL");
+		throw std::exception("Error in: " __FUNCTION__);
 	}
 	int i = 0;
 	int curr_length = this->strLength;
@@ -156,8 +150,6 @@ void String::reverse() {
 	{
 		std::swap(this->data[i], this->data[j]);
 	}
-
-
 }
 
 char String::back() const {
@@ -196,7 +188,7 @@ void String::copy(const char* str) {
 void String::replace(const char c, const int index) {
 
 	if (index >= strLength) {
-		throw std::out_of_range("expected less index");
+		throw std::out_of_range("expected less value in: " __FUNCTION__);
 	}
 
 	size_t i = 0;
@@ -217,7 +209,7 @@ String::Iterator String::find(const Iterator begin, const Iterator end, const ch
 		}
 		++it;
 	}
-	throw std::exception("Don't exist");
+	throw std::exception("Don't exist in: " __FUNCTION__);
 }
 
 void String::copy_source(const String& st, int index) {
@@ -228,6 +220,18 @@ void String::copy_source(const String& st, int index) {
 		++i;
 	}
 	this->data[i] = '\0';
+}
+
+String::operator int() const
+{
+	String a(this->data);
+	return a.to_int();
+}
+
+String::operator double()const 
+{
+	return 1.0;
+
 }
 
 bool String::operator<(const String& st1)
